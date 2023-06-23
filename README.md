@@ -11,6 +11,16 @@ An unified permissions API for React Native on iOS, Android and Windows.<br>
 [![platform - ios](https://img.shields.io/badge/platform-iOS-000.svg?logo=apple&style=for-the-badge)](https://developer.apple.com/ios)
 [![platform - windows](https://img.shields.io/badge/platform-Windows-0067b8.svg?logo=windows&style=for-the-badge)](https://www.microsoft.com/en-us/windows)
 
+## Funding
+
+<a href="https://github.com/sponsors/zoontek">
+  <img align="right" width="150" alt="This library helped you? Consider sponsoring!" src=".github/funding-octocat.svg">
+</a>
+
+This module is provided **as is**, I work on it in my free time.
+
+If your company uses it in a production app, consider sponsoring this project 💰. You also can contact me for **premium** enterprise support, help with issues, prioritize bugfixes, feature requests, etc.
+
 ## Support
 
 | version | react-native version | Xcode version |
@@ -40,6 +50,7 @@ _📌  Note that these commands must be re-executed each time you update this 
     "Camera",
     "Contacts",
     "FaceID",
+    "LocalNetworkPrivacy",
     "LocationAccuracy",
     "LocationAlways",
     "LocationWhenInUse",
@@ -87,6 +98,8 @@ Then update your `Info.plist` with wanted permissions usage descriptions:
   <string>YOUR TEXT</string>
   <key>NSFaceIDUsageDescription</key>
   <string>YOUR TEXT</string>
+  <key>NSLocalNetworkUsageDescription</key>
+  <string>YOUR TEXT</string>
   <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
   <string>YOUR TEXT</string>
   <key>NSLocationAlwaysUsageDescription</key>
@@ -114,6 +127,13 @@ Then update your `Info.plist` with wanted permissions usage descriptions:
   <string>YOUR TEXT</string>
   <key>NSUserTrackingUsageDescription</key>
   <string>YOUR TEXT</string>
+
+  <!-- 🚨 This is required when requesting PERMISSIONS.IOS.LOCAL_NETWORK_PRIVACY 🚨 -->
+
+  <key>NSBonjourServices</key>
+  <array>
+    <string>_lnp._tcp.</string>
+  </array>
 
   <!-- … -->
 
@@ -478,6 +498,7 @@ PERMISSIONS.IOS.CALENDARS;
 PERMISSIONS.IOS.CAMERA;
 PERMISSIONS.IOS.CONTACTS;
 PERMISSIONS.IOS.FACE_ID;
+PERMISSIONS.IOS.LOCAL_NETWORK_PRIVACY;
 PERMISSIONS.IOS.LOCATION_ALWAYS;
 PERMISSIONS.IOS.LOCATION_WHEN_IN_USE;
 PERMISSIONS.IOS.MEDIA_LIBRARY;
@@ -958,11 +979,3 @@ You can then add the following line to that setup file to mock the `NativeModule
 ```js
 jest.mock('react-native-permissions', () => require('react-native-permissions/mock'));
 ```
-
-## Sponsors
-
-This module is provided **as is**, I work on it in my free time.
-
-If you or your company uses it in a production app, consider sponsoring this project 💰. You also can contact me for **premium** enterprise support: help with issues, prioritize bugfixes, feature requests, etc.
-
-<a href="https://github.com/sponsors/zoontek"><img align="center" alt="Sponsors list" src="https://raw.githubusercontent.com/zoontek/sponsors/main/sponsorkit/sponsors.svg"></a>

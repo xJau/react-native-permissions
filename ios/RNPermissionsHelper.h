@@ -53,9 +53,13 @@ typedef NS_ENUM(NSInteger, RNPermission) {
 #if __has_include("RNPermissionHandlerPhotoLibraryAddOnly.h")
   RNPermissionPhotoLibraryAddOnly = 17,
 #endif
+#if __has_include("RNPermissionHandlerLocalNetworkPrivacy.h")
+  RNPermissionLocalNetworkPrivacy = 18,
+#endif
 };
 
-typedef enum {
+typedef enum
+{
   RNPermissionStatusNotAvailable = 0,
   RNPermissionStatusNotDetermined = 1,
   RNPermissionStatusRestricted = 2,
@@ -68,23 +72,22 @@ typedef enum {
 
 @required
 
-+ (NSArray<NSString *> * _Nonnull)usageDescriptionKeys;
++ (NSArray<NSString *> *_Nonnull)usageDescriptionKeys;
 
-+ (NSString * _Nonnull)handlerUniqueId;
++ (NSString *_Nonnull)handlerUniqueId;
 
-- (void)checkWithResolver:(void (^ _Nonnull)(RNPermissionStatus status))resolve
-                 rejecter:(void (^ _Nonnull)(NSError * _Nonnull error))reject;
+- (void)checkWithResolver:(void (^_Nonnull)(RNPermissionStatus status))resolve
+                 rejecter:(void (^_Nonnull)(NSError *_Nonnull error))reject;
 
-- (void)requestWithResolver:(void (^ _Nonnull)(RNPermissionStatus status))resolve
-                   rejecter:(void (^ _Nonnull)(NSError * _Nonnull error))reject;
+- (void)requestWithResolver:(void (^_Nonnull)(RNPermissionStatus status))resolve
+                   rejecter:(void (^_Nonnull)(NSError *_Nonnull error))reject;
 
 @end
 
-
 @interface RNPermissionsHelper : NSObject
 
-+ (bool)isFlaggedAsRequested:(NSString * _Nonnull)handlerId;
++ (bool)isFlaggedAsRequested:(NSString *_Nonnull)handlerId;
 
-+ (void)flagAsRequested:(NSString * _Nonnull)handlerId;
++ (void)flagAsRequested:(NSString *_Nonnull)handlerId;
 
 @end
